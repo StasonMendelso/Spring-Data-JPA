@@ -6,11 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 /**
  * @author Stanislav Hlova
@@ -37,6 +39,8 @@ public class Person {
     @Column(name = "email")
     private String email;
 
+    @OneToMany(mappedBy = "owner")
+    private List<Item> itemList;
     public Person() {
 
     }
@@ -45,6 +49,14 @@ public class Person {
         this.name = name;
         this.age = age;
         this.email = email;
+    }
+
+    public List<Item> getItemList() {
+        return itemList;
+    }
+
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
     }
 
     public int getId() {
