@@ -3,6 +3,7 @@ package org.stanislav.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.stanislav.models.Mood;
 import org.stanislav.models.Person;
 import org.stanislav.repositories.PeopleRepository;
 
@@ -34,7 +35,7 @@ public class PeopleService {
     @Transactional
     public void save(Person person) {
         person.setCreatedAt(new Date());
-
+        person.setMood(Mood.CALM);
         peopleRepository.save(person);
     }
 
