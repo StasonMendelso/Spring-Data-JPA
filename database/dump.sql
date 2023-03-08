@@ -5,7 +5,7 @@
 -- Dumped from database version 15.2
 -- Dumped by pg_dump version 15.2
 
--- Started on 2023-03-08 13:48:28
+-- Started on 2023-03-08 14:17:13
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -87,6 +87,7 @@ CREATE TABLE public.person (
     email character varying NOT NULL,
     date_of_birth date,
     created_at timestamp without time zone,
+    mood character varying,
     CONSTRAINT person_age_check CHECK ((age > 0))
 );
 
@@ -125,14 +126,15 @@ INSERT INTO public.item (id, person_id, item_name) VALUES (4, 9, 'TV');
 -- Data for Name: person; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.person (id, name, age, email, date_of_birth, created_at) VALUES (6, 'Bobbby', 23, 'bobby@email.com', NULL, NULL);
-INSERT INTO public.person (id, name, age, email, date_of_birth, created_at) VALUES (9, 'Marley', 34, 'marley@gmial.com', NULL, NULL);
-INSERT INTO public.person (id, name, age, email, date_of_birth, created_at) VALUES (10, 'Tom', 25, 'tom@gmail.com', NULL, NULL);
-INSERT INTO public.person (id, name, age, email, date_of_birth, created_at) VALUES (11, 'Bob', 31, 'bob1@gmail.com', NULL, NULL);
-INSERT INTO public.person (id, name, age, email, date_of_birth, created_at) VALUES (12, 'Bob', 53, 'bob2@gmail.com', NULL, NULL);
-INSERT INTO public.person (id, name, age, email, date_of_birth, created_at) VALUES (13, 'Bob', 28, 'bob3@gmail.com', NULL, NULL);
-INSERT INTO public.person (id, name, age, email, date_of_birth, created_at) VALUES (14, 'Katty', 14, 'katty@gmail.com', NULL, NULL);
-INSERT INTO public.person (id, name, age, email, date_of_birth, created_at) VALUES (15, 'Tommmy', 20, 'tommmy@email.com', '2023-03-08', '2023-03-08 13:46:33.426');
+INSERT INTO public.person (id, name, age, email, date_of_birth, created_at, mood) VALUES (6, 'Bobbby', 23, 'bobby@email.com', NULL, NULL, NULL);
+INSERT INTO public.person (id, name, age, email, date_of_birth, created_at, mood) VALUES (9, 'Marley', 34, 'marley@gmial.com', NULL, NULL, NULL);
+INSERT INTO public.person (id, name, age, email, date_of_birth, created_at, mood) VALUES (10, 'Tom', 25, 'tom@gmail.com', NULL, NULL, NULL);
+INSERT INTO public.person (id, name, age, email, date_of_birth, created_at, mood) VALUES (11, 'Bob', 31, 'bob1@gmail.com', NULL, NULL, NULL);
+INSERT INTO public.person (id, name, age, email, date_of_birth, created_at, mood) VALUES (12, 'Bob', 53, 'bob2@gmail.com', NULL, NULL, NULL);
+INSERT INTO public.person (id, name, age, email, date_of_birth, created_at, mood) VALUES (13, 'Bob', 28, 'bob3@gmail.com', NULL, NULL, NULL);
+INSERT INTO public.person (id, name, age, email, date_of_birth, created_at, mood) VALUES (14, 'Katty', 14, 'katty@gmail.com', NULL, NULL, NULL);
+INSERT INTO public.person (id, name, age, email, date_of_birth, created_at, mood) VALUES (15, 'Tommmy', 20, 'tommmy@email.com', '2023-03-08', '2023-03-08 13:46:33.426', NULL);
+INSERT INTO public.person (id, name, age, email, date_of_birth, created_at, mood) VALUES (17, 'Marleyi', 20, 'marleyi@gmial.com', '2023-03-08', '2023-03-08 14:14:32.881', 'CALM');
 
 
 --
@@ -150,7 +152,7 @@ SELECT pg_catalog.setval('public.item_id_seq', 4, true);
 -- Name: person_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.person_id_seq', 15, true);
+SELECT pg_catalog.setval('public.person_id_seq', 17, true);
 
 
 --
@@ -189,7 +191,7 @@ ALTER TABLE ONLY public.item
     ADD CONSTRAINT item_person_id_fkey FOREIGN KEY (person_id) REFERENCES public.person(id) ON DELETE SET NULL;
 
 
--- Completed on 2023-03-08 13:48:28
+-- Completed on 2023-03-08 14:17:13
 
 --
 -- PostgreSQL database dump complete
