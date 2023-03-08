@@ -55,4 +55,12 @@ public class Item {
     public void setOwner(Person person) {
         this.owner = person;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
